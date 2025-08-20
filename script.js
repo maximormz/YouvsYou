@@ -70,4 +70,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+});
+
+// Funcionalidad para FAQ
+document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            // Cerrar otras preguntas abiertas
+            faqQuestions.forEach(q => {
+                if (q !== question) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle la pregunta actual
+            this.classList.toggle('active');
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('active');
+        });
+    });
 });
